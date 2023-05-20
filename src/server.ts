@@ -7,13 +7,14 @@ const httpServer = createServer(app);
 const io = new Server(httpServer);
 
 io.on("connection", (socket: Socket) => {
+  const { token } = socket.handshake.query;
+  // TODO: Check and validate token with auth service
   const userId = 'user-id'; // Replace with appropriate user ID
   socket.join(userId);
 });
 
-app.post('/send-data/:userId', (req, res) => {
-  const { userId } = req.params;
-  const { data } = req.body;
+app.post('/send-data', (req, res) => {
+  const { userId, data } = req.body;
 
   io.to(userId).emit('data', data);
 
