@@ -1,0 +1,16 @@
+{
+  "name": "suiwallet-websocket",
+  "version": "0.0.1",
+  "main": "index.js",
+  "repository": "https://github.com/determinedguy/suiwallet-websocket.git",
+  "author": "Muhammad Athallah <mhd.athallah@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "socket.io": "^4.6.1"
+  },
+  "optionalDependencies": {
+    "bufferutil": "^4.0.7",
+    "utf-8-validate": "^6.0.3"
+  },
+  "packageManager": "yarn@3.5.1"
+}
