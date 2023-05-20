@@ -7,7 +7,7 @@ const httpServer = createServer(app);
 const io = new Server(httpServer);
 
 io.on("connection", (socket: Socket) => {
-  const userId = 'user-id'; // Replate with appropriate user ID
+  const userId = 'user-id'; // Replace with appropriate user ID
   socket.join(userId);
 });
 
