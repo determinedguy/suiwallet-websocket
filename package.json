@@ -6,8 +6,8 @@
   "author": "Muhammad Athallah <mhd.athallah@gmail.com>",
   "scripts": {
     "build": "tsc --project ./",
-    "start:dev": "nodemon src/server.ts",
-    "start:prod": "node dist/server.js"
+    "dev": "nodemon src/server.ts",
+    "start": "node dist/server.js"
   },
   "license": "MIT",
   "dependencies": {
