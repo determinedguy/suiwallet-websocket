@@ -11,7 +11,10 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@types/node-fetch": "^2.6.4",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "node-fetch": "2",
     "socket.io": "^4.6.1"
   },
   "optionalDependencies": {

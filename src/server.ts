@@ -2,15 +2,33 @@ import express from "express";
 import { createServer } from "http";
 import { Server, Socket } from "socket.io";
 
-const app = express();
-const httpServer = createServer(app);
-const io = new Server(httpServer);
+import dotenv from "dotenv"
+import fetch from "node-fetch"
 
-io.on("connection", (socket: Socket) => {
+dotenv.config()
+
+const app = express();
+app.use(express.json())
+
+const httpServer = createServer(app);
+const io = new Server(httpServer, {
+  cors: {
+    origin: "*",
+  }
+});
+
+io.on("connection", async (socket: Socket) => {
   const { token } = socket.handshake.query;
-  // TODO: Check and validate token with auth service
-  const userId = 'user-id'; // Replace with appropriate user ID
-  socket.join(userId);
+
+  const { id } = await fetch(`${process.env.AUTHENTICATION_API_URL}/cores/auth/validate/`, {
+    method: "GET",
+    headers: {
+      Authorization: `Token ${token}`
+    }
+  })
+    .then(res => res.json())
+
+  socket.join(id);
 });
 
 app.post('/send-data', (req, res) => {
@@ -21,6 +39,6 @@ app.post('/send-data', (req, res) => {
   res.sendStatus(200);
 });
 
-httpServer.listen(3000, () => {
+httpServer.listen(3001, () => {
   console.log("Socket.IO server berjalan di http://localhost:3000");
 });
