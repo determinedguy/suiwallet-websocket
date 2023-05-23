@@ -40,5 +40,5 @@ app.post('/send-data', (req, res) => {
 });
 
 httpServer.listen(3001, () => {
-  console.log("Socket.IO server berjalan di http://localhost:3000");
+  console.log("Socket.IO server berjalan di port 3001");
 });
